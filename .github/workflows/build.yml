@@ -14,9 +14,17 @@ jobs:
         with:
           go-version: '1.19.9'
           cache-dependencies: go.sum
-      - name: Install dependencies
-        run: go get .
-      - name: Build
-        run: go build -v main.go
+#      - name: Install dependencies
+#        run: go get .
+#      - name: Build
+#        run: go build -v main.go
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
+          REMOTE_HOST: ${ { secrets.HOST_DNS }}
+          REMOTE_USER: ${ { secrets.USERNAME }}
+          TARGET: ${ { secrets.TARGET_DIR }}
 
 

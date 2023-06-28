@@ -15,4 +15,5 @@ func main() {
 	if err := http.ListenAndServe(":3000", nil); err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Server is running on port 3000")
 }
