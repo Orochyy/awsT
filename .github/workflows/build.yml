@@ -31,5 +31,4 @@ jobs:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            docker-compose up -d
+          script: cd /home/ec2-user/webapp && docker-compose up -d
