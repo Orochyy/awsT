@@ -25,5 +25,6 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-      - name: Start containers
-        run: docker-compose up -d
+          ARGS: "docker-compose -f ${TARGET_DIR}/docker-compose.yml up -d"
+#      - name: Start containers
+#        run: docker-compose up -d
