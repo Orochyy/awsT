@@ -25,6 +25,11 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-          ARGS: "docker-compose -f ${TARGET_DIR}/docker-compose.yml up -d"
-#      - name: Start containers
-#        run: docker-compose up -d
+      - name: Start Docker Containers
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker-compose up -d
